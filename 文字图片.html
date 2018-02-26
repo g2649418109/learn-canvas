@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display: block;margin: 20px auto"></canvas>
+	<script>
+		var myCanvas = document.getElementById("myCanvas")
+		myCanvas.width = "1000"
+		myCanvas.height = "800"
+
+		var cxt = myCanvas.getContext("2d")
+
+		//添加图片
+		var img = new Image()
+		img.src = "img/8.gif"
+		img.onload = function() {
+			cxt.drawImage(img,0,0)
+		}
+
+		 //添加文字
+        cxt.font="30px Arial";
+
+        cxt.fillStyle="red";
+        cxt.fillText("我是guoguo",380,290);
+
+        cxt.strokeStyle="red";
+        cxt.strokeText("我是guoguo",380,330);
+	</script>
+</body>
+</html>

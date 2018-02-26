@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+         <style>
+           canvas{box-shadow: 0px 0px 10px #f00; } 
+         </style>
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display: block;margin: auto"></canvas>
+	<script>
+                var CANVAS_WIDTH=300;
+                var CANVAS_HEIGHT=200;
+		var myCanvas = document.getElementById("myCanvas")
+		myCanvas.width = CANVAS_WIDTH
+		myCanvas.height = CANVAS_HEIGHT
+
+		var ctx = myCanvas.getContext("2d")
+
+        ctx.beginPath();
+        ctx.arc(150,100,80,0,2*Math.PI);
+        ctx.closePath();
+
+        var tupian=new Image();
+        tupian.src="img/2.gif";
+        tupian.onload=function(){
+            ctx.save();
+            ctx.clip();
+            ctx.drawImage(tupian,50,0,200,200);
+            ctx.restore();
+
+        }
+        ctx.fillText("guoguo",250,150,50,50);
+
+	</script>
+</body>
+</html>

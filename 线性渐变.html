@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display: block;margin: 20px auto"></canvas>
+	<script>
+		var myCanvas = document.getElementById("myCanvas")
+		myCanvas.width = "500"
+		myCanvas.height = "300"
+
+		var cxt = myCanvas.getContext("2d")
+
+		//创建线性渐变对象
+		var lg = cxt.createLinearGradient(10,10,210,110)
+		lg.addColorStop(0,"red")
+		lg.addColorStop(1,"blue")
+
+		//带线性渐变矩形
+		cxt.fillStyle = lg
+		cxt.fillRect(10,10,200,100)
+
+		//带线性渐变的圆
+		var lgl = cxt.createLinearGradient(80,130,140,200)
+		lgl.addColorStop(0,"green")
+		lgl.addColorStop(1,"yellow")
+
+		cxt.beginPath()
+		cxt.arc(105,160,50,0,Math.PI*2)
+		cxt.fillStyle = lgl
+		cxt.fill()
+		cxt.closePath()
+	</script>
+</body>
+</html>

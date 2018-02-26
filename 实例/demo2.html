@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		* {
+	    margin: 0;
+	    padding: 0;
+		}
+
+		html,
+		body {
+		    height: 100%;
+		    width: 100%;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%
+		}
+
+		#canvas {
+		    margin: 0 auto;
+		    display: block;
+		    
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="1000"></canvas>
+	<script>
+		var canvas = document.getElementById("canvas")
+		canvas.width = "500"
+		canvas.height = "600"
+		// var context=canvas.getContext('2d');
+		window.onload = function(){
+		var context = canvas.getContext('2d');
+		var ballcount = -1
+		setInterval(function(){
+    
+        ballcount = ballcount + 1;
+        
+        if(ballcount<=360)
+        {    
+            Drawball(context,20,ballcount); 
+                
+                Draw(context,ballcount);
+        }
+        else{
+        ballcount=0;    
+        }
+        
+    },50);
+		// Drawball(context,20,100)
+		// Draw(context,100)
+    }
+    function maomao(cxt) {
+	 // 耳朵部分
+	 // 左
+	 cxt.save();
+     cxt.beginPath();
+     cxt.translate(canvas.width/2,canvas.height/2-100);//将画布坐标系原点移至中心
+     cxt.rotate(20*Math.PI/180); 
+     cxt.translate(-(canvas.width/2-70),-(canvas.height/2));//修正画布坐标系
+     cxt.moveTo(canvas.width/2-30,canvas.height/2);
+	 cxt.quadraticCurveTo(canvas.width/2,canvas.height/2-70 ,canvas.width/2+30,canvas.height/2);
+	 cxt.fillStyle="#228b7f"; 
+	 cxt.fill();
+     cxt.closePath();
+     cxt.restore();
+     // 右
+     cxt.save();
+     cxt.beginPath();
+     cxt.translate(canvas.width/2,canvas.height/2-100);//将画布坐标系原点移至中心
+     cxt.rotate(-20*Math.PI/180); //旋转
+     cxt.translate(-(canvas.width/2+70),-(canvas.height/2));//修正画布坐标系
+     cxt.moveTo(canvas.width/2-30,canvas.height/2);
+     cxt.quadraticCurveTo(canvas.width/2,canvas.height/2-70 ,canvas.width/2+30,canvas.height/2);
+         cxt.fillStyle="#228b7f"; 
+     cxt.fill();
+     cxt.closePath();
+     cxt.restore();
+
+ 	  // 身体部分
+     cxt.beginPath();
+     cxt.moveTo(canvas.width/2,canvas.height/2-100);
+     cxt.bezierCurveTo(canvas.width/2+170,canvas.height/2-100,canvas.width/2+170,canvas.height/2+100,canvas.width/2,canvas.height/2+100);
+     cxt.moveTo(canvas.width/2,canvas.height/2+100);
+     cxt.bezierCurveTo(canvas.width/2-170,canvas.height/2+100,canvas.width/2-170,canvas.height/2-100,canvas.width/2,canvas.height/2-100);
+
+     cxt.fillStyle="#29a69c"; 
+     cxt.fill();
+     cxt.closePath();
+
+     // 眼睛嘴
+     cxt.beginPath();
+	 cxt.arc(canvas.width/2-45,canvas.height/2-20,30,0,2*Math.PI);
+
+	 cxt.fillStyle="white"; 
+	 cxt.fill();
+	 cxt.closePath();
+	 cxt.beginPath();
+	 cxt.arc(canvas.width/2+45,canvas.height/2-20,30,0,2*Math.PI);
+	 cxt.fillStyle="white"; 
+	 cxt.fill();
+	 cxt.beginPath();
+	 
+	 cxt.moveTo(canvas.width/2-30,canvas.height/2+40);
+	 cxt.bezierCurveTo(canvas.width/2-30,canvas.height/2+60,canvas.width/2,canvas.height/2+60,canvas.width/2,canvas.height/2+40);
+	 cxt.moveTo(canvas.width/2,canvas.height/2+40);
+	 cxt.bezierCurveTo(canvas.width/2,canvas.height/2+60,canvas.width/2+30,canvas.height/2+60,canvas.width/2+30,canvas.height/2+40);
+	   
+	 cxt.lineCap="round";
+	 cxt.lineWidth=4;
+	 cxt.strokeStyle="#228b7f"; 
+	 cxt.stroke();
+	 cxt.closePath();
+    }
+	//绘制眼珠
+	function Drawball(cxt,r ,i){
+	    cxt.clearRect(0,0,canvas.width, canvas.height);
+	    maomao(cxt)
+	    cxt.beginPath();
+	    cxt.arc((canvas.width/2-45)+(Math.sin((6*i)/180*Math.PI)*r),(canvas.height/2-20 )-(Math.cos((6*i)/180*Math.PI)*r),4,0,2*Math.PI);
+	    cxt.fillStyle="black"; 
+	    cxt.fill();
+	    cxt.closePath();
+	    cxt.beginPath();
+	    cxt.arc((canvas.width/2+45)+(Math.sin((6*i)/180*Math.PI)*r),(canvas.height/2 -20)-(Math.cos((6*i)/180*Math.PI)*r),4,0,2*Math.PI);
+	   cxt.fillStyle="black"; 
+	   cxt.fill();
+	   cxt.closePath();
+	}
+	// 小球球
+	function Draw(cxt,i){
+      cxt.beginPath();
+      cxt.arc((canvas.width/2)+(Math.sin((8*i)/180*Math.PI)*200),(canvas.height/2)-(Math.cos((8*i)/180*Math.PI)*200),10,0,2*Math.PI);
+      cxt.fillStyle="rgba(34,139,127,1)";
+      cxt.fill();
+      cxt.closePath();
+      cxt.beginPath();
+   
+      cxt.arc((canvas.width/2)+(Math.sin((8*(i-1))/180*Math.PI)*200),(canvas.height/2)-(Math.cos((8*(i-1))/180*Math.PI)*200),8,0,2*Math.PI);
+      cxt.fillStyle="rgba(34,139,127,0.8)";
+      cxt.fill();
+      cxt.closePath();
+      cxt.beginPath();
+      cxt.arc((canvas.width/2)+(Math.sin((8*(i-2))/180*Math.PI)*200),(canvas.height/2)-(Math.cos((8*(i-2))/180*Math.PI)*200),6,0,2*Math.PI);
+      cxt.fillStyle="rgba(34,139,127,0.6)";
+     cxt.fill();
+     cxt.closePath();    
+    }
+</script>
+</body>
+</html>

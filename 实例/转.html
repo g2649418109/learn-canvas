@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="canvas">我是谁</canvas>
+	<script>
+		var canvas = document.getElementById("canvas")
+		canvas.width = "500"
+		canvas.height = "600"
+		window.onload = function(){
+		var context = canvas.getContext('2d');
+		var ballcount = -1
+		setInterval(function(){
+    
+        ballcount = ballcount + 1;
+        
+        if(ballcount<=360)
+        {    
+            // Drawball(context,20,ballcount); 
+                
+                Draw(context,ballcount);
+        }
+        else{
+        ballcount=0;    
+        }
+        
+      },100);
+    }
+
+    //绘制眼珠
+	function Drawball(cxt,r ,i){
+	    cxt.clearRect(0,0,canvas.width, canvas.height);
+	    cxt.beginPath();
+	    cxt.arc((canvas.width/2-45)+(Math.sin((6*i)/180*Math.PI)*r),(canvas.height/2-20 )-(Math.cos((6*i)/180*Math.PI)*r),4,0,2*Math.PI);
+	    cxt.fillStyle="black"; 
+	    cxt.fill();
+	    cxt.closePath();
+	    cxt.beginPath();
+	    cxt.arc((canvas.width/2+45)+(Math.sin((6*i)/180*Math.PI)*r),(canvas.height/2 -20)-(Math.cos((6*i)/180*Math.PI)*r),4,0,2*Math.PI);
+	   cxt.fillStyle="black"; 
+	   cxt.fill();
+	   cxt.closePath();
+	}
+	// 小球球
+	function Draw(cxt,i){
+	cxt.clearRect(0,0,canvas.width, canvas.height);
+      cxt.beginPath();
+      cxt.arc((canvas.width/2)+(Math.sin((8*i)/180*Math.PI)*200),(canvas.height/2)-(Math.cos((8*i)/180*Math.PI)*200),10,0,2*Math.PI);
+      cxt.fillStyle="rgba(34,139,127,1)";
+      cxt.fill();
+      cxt.closePath();
+      cxt.beginPath();
+   
+      cxt.arc((canvas.width/2)+(Math.sin((8*(i-1))/180*Math.PI)*200),(canvas.height/2)-(Math.cos((8*(i-1))/180*Math.PI)*200),8,0,2*Math.PI);
+      cxt.fillStyle="rgba(34,139,127,0.8)";
+      cxt.fill();
+      cxt.closePath();
+      cxt.beginPath();
+      cxt.arc((canvas.width/2)+(Math.sin((8*(i-2))/180*Math.PI)*200),(canvas.height/2)-(Math.cos((8*(i-2))/180*Math.PI)*200),6,0,2*Math.PI);
+      cxt.fillStyle="rgba(34,139,127,0.6)";
+     cxt.fill();
+     cxt.closePath();    
+    }
+	</script>
+</body>
+</html>

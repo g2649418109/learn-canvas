@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		body{
+			padding: 0;
+			margin: 0;
+		}
+		.div{
+			width: 100%;
+			height: 400px;
+			display: block;
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div style="position: fixed;z-index: 20">
+		<button onclick="ckick1()">1</button>
+		<button onclick="ckick2()">2</button>
+		<button onclick="ckick3()">3</button>
+	</div>
+	<div id="one"  class="div" style="background-color: red">11111111</div>
+	<div id="two"  class="div" style="background-color: #0C9EC5">22222222</div>
+	<div id="three" class="div" style="background-color: #CB00B4">33333333</div>
+	<script>
+		function ckick1 () {
+			window.scrollTo(0,0)
+		}
+		function ckick2 () {
+			window.scrollTo(400,0)
+		}
+		function ckick3 () {
+			window.scrollTo(800,0)
+		}
+	</script>
+</body>
+</html>

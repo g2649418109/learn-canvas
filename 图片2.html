@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display: block;margin: 20px auto"></canvas>
+	<script>
+		var myCanvas = document.getElementById("myCanvas")
+		myCanvas.width = "500"
+		myCanvas.height = "300"
+
+		var cxt = myCanvas.getContext("2d")
+
+		/*1.画图*/
+		var img1 = new Image()
+		img1.src = "img/8.gif"
+
+		img1.onload = function () {
+			
+            //ctx.drawImage(img1,dx,dy,dw,dh);
+
+            cxt.drawImage(img1,225,125,50,50);
+		}
+
+		/*画精灵图片*/
+		// source源  destination 目标地
+		var img2 = new Image()
+		img2.src = "img/1.gif"
+		var nv2 = {
+			x: 0,
+			y:0,
+			w:184,
+			h:310
+		}
+		img2.onload = function() {
+	    //语法 ctx.drawImage(img2,s.x,s.y,s.w,s.h,d.x,d.y,d.w,d.h);
+
+        cxt.drawImage(img2,nv2.x,nv2.y,nv2.w,nv2.h,0,0,nv2.w/2,nv2.h/2);
+		}
+	</script>
+</body>
+</html>

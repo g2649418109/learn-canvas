@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display: block;margin: 20px auto"></canvas>
+	<script>
+		var myCanvas = document.getElementById("myCanvas")
+		myCanvas.width = "500"
+		myCanvas.height = "300"
+
+		var cxt = myCanvas.getContext("2d")
+
+		//创建径向渐变对象
+		var rg = cxt.createRadialGradient(110,110,1,110,110,110)
+		rg.addColorStop(0,"#f00");
+        rg.addColorStop(0.5,"rgb(238,182,231)");
+        rg.addColorStop(1,"blue");
+
+		//带径向渐变矩形
+		cxt.fillStyle = rg
+		cxt.fillRect(10,10,200,200)
+
+		//带径向渐变的圆
+		var rgl = cxt.createRadialGradient(310,61,1,310,110,200)
+		rgl.addColorStop(0,"#fff")
+		rgl.addColorStop(1,"#000")
+
+		cxt.beginPath()
+		cxt.arc(310,111,100,0,Math.PI*2)
+		cxt.fillStyle = rgl
+		cxt.fill()
+		cxt.closePath()
+	</script>
+</body>
+</html>

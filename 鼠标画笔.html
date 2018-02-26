@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="myCanvas" style="border:1px solid #ddd;display: block;margin: 20px auto"></canvas>
+	<script>
+		var myCanvas = document.getElementById("myCanvas")
+		myCanvas.width = "500"
+		myCanvas.height = "300"
+
+		var cxt = myCanvas.getContext("2d")
+
+		var canvaL = myCanvas.offsetLeft
+		var canvaT = myCanvas.offsetTop
+
+		myCanvas.onmousedown = function(e) {
+			var ev = e || window.event
+			var left = ev.clientX
+			var top = ev.clientY
+			var x = left - canvaL
+			var y = top - canvaT
+
+			cxt.moveTo(x,y)
+			myCanvas.onmousemove = function(e){
+				var ev = e || window.event
+				var left = ev.clientX
+				var top = ev.clientY
+				var x = left - canvaL
+				var y = top - canvaT
+				cxt.lineTo(x,y);
+
+                cxt.stroke();
+			}
+
+			myCanvas.onmouseup = function() {
+				myCanvas.onmouseup = null
+				myCanvas.onmousemove=null
+			}
+
+			myCanvas.onmouseout = function() {
+				myCanvas.onmouseup=null
+                myCanvas.onmousemove=null
+                myCanvas.onmouseout=null
+			}
+		}
+		
+	</script>
+</body>
+</html>
