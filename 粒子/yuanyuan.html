@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>表</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<canvas id="clock" width="500px" height="500px"></canvas>
+	<script>
+		var c = document.getElementById("clock")
+        let ctx = c.getContext("2d");
+        draw()
+        function draw() {
+		    ctx.beginPath();
+		    ctx.arc(75,75,50,0,Math.PI*2,true); // 绘制
+		    ctx.moveTo(110,75);
+		    ctx.arc(75,75,35,0,Math.PI,false);   // 口(顺时针)
+		    ctx.moveTo(65,65);
+		    ctx.arc(60,65,5,0,Math.PI*2,true);  // 左眼
+		    ctx.moveTo(95,65);
+		    ctx.arc(90,65,5,0,Math.PI*2,true);  // 右眼
+		    ctx.stroke();
+		}
+  	</script>
+</body>
+</html>
